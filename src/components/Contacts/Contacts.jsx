@@ -1,14 +1,19 @@
+import { useNavigate } from "react-router-dom";
 import { Button, Flex, Table } from "antd";
 import { contactsStore } from "../../store";
 import { getColumns } from "./columns";
-import { useNavigate } from "react-router-dom";
 
 const Contacts = () => {
   const navigate = useNavigate();
 
-  const { contacts } = contactsStore();
+  const { contacts, setContacts } = contactsStore();
 
-  console.log({ contacts });
+  const handleEdit = (id) => {
+    navigate(`/edit-contact/${id}`);
+  };
+  const handleDelete = (id) => {
+    setContacts(contacts.filter((contact) => contact.id !== id));
+  };
 
   return (
     <Flex vertical gap={20}>
@@ -21,7 +26,7 @@ const Contacts = () => {
         size="middle"
         pageSize={5}
         dataSource={contacts.map((item, i) => ({ ...item, key: i }))}
-        columns={getColumns()}
+        columns={getColumns({ handleEdit, handleDelete })}
       />
     </Flex>
   );

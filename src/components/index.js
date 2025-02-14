@@ -1,5 +1,5 @@
-import AddContact from "./AddContact/AddContact";
+import ContactForm from "./ContactForm/ContactForm";
 import Contacts from "./Contacts/Contacts";
 import Layout from "./Layout/Layout";
 
-export { Layout, Contacts, AddContact };
+export { Layout, Contacts, ContactForm };

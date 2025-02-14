@@ -1,4 +1,4 @@
-import { Flex, Layout as AntdLayout } from "antd";
+import { Layout as AntdLayout } from "antd";
 import { Link, Outlet } from "react-router-dom";
 
 import "./Layout.css";
@@ -6,22 +6,15 @@ import "./Layout.css";
 const Layout = () => {
   return (
     <AntdLayout>
-      <AntdLayout.Sider>
-        <Flex className="sider">
-          <Link to="/">PhoneBook</Link>
-        </Flex>
-      </AntdLayout.Sider>
+      <AntdLayout.Header>
+        <Link style={{ color: "white" }} to="/">
+          PhoneBook
+        </Link>
+      </AntdLayout.Header>
 
-      <AntdLayout>
-        <Flex className="header">
-          <Flex>PhoneBook</Flex>
-          <Flex align="center" gap={20}></Flex>
-        </Flex>
-
-        <AntdLayout.Content style={{ padding: "20px" }}>
-          <Outlet />
-        </AntdLayout.Content>
-      </AntdLayout>
+      <AntdLayout.Content style={{ padding: "20px", overflow: "auto" }}>
+        <Outlet />
+      </AntdLayout.Content>
     </AntdLayout>
   );
 };
